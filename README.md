@@ -29,7 +29,7 @@ This repository is a modified version of [Felix3322/PotPlayer_Chatgpt_Translate]
 - 从 [Releases](https://github.com/Liu8Can/PotPlayer_DeepSeek_Translate/releases) 下载最新版本的插件文件。
 
 ### 2. **安装插件**
-- 将下载的插件文件复制到 PotPlayer 的插件目录中，例如：
+- 解压后将`SubtitleTranslate - DeepSeek.as`和`SubtitleTranslate - DeepSeek.ico`两个文件复制到 PotPlayer 的翻译插件目录中，例如：
   ```
   D:\Program Files\DAUM\PotPlayer\Extension\Subtitle\Translate
   ```
@@ -54,6 +54,7 @@ This repository is a modified version of [Felix3322/PotPlayer_Chatgpt_Translate]
 ## 🙏 致谢 / Acknowledgments
 
 - 感谢 [Felix3322](https://github.com/Felix3322) 提供的原始代码库 [PotPlayer_Chatgpt_Translate](https://github.com/Felix3322/PotPlayer_Chatgpt_Translate)。
+- 感谢 [yxyxyz6](https://github.com/yxyxyz6) 提供的修改参考 [yxyxyz6/PotPlayer_ollama_Translate](https://github.com/yxyxyz6/PotPlayer_ollama_Translate/tree/main)
 - 感谢 **DeepSeek** 提供的强大模型支持，为插件提供了高效的翻译能力。
 
 ---
