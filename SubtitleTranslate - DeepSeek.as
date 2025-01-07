@@ -165,12 +165,12 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
 
     if (api_key.empty()) {
         HostPrintUTF8("{$CP0=API Key not configured. Please enter it in the settings menu.$}\n");
-        return "";
+        return "翻译失败"; // 返回明确的错误提示
     }
 
     if (DstLang.empty() || DstLang == "{$CP0=Auto Detect$}") {
         HostPrintUTF8("{$CP0=Target language not specified. Please select a target language.$}\n");
-        return "";
+        return "翻译失败"; // 返回明确的错误提示
     }
 
     if (SrcLang.empty() || SrcLang == "{$CP0=Auto Detect$}") {
@@ -227,7 +227,7 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
     string response = HostUrlGetString(apiUrl, UserAgent, headers, requestData);
     if (response.empty()) {
         HostPrintUTF8("{$CP0=Translation request failed. Please check network connection or API Key.$}\n");
-        return "";
+        return "翻译失败"; // 返回明确的错误提示
     }
 
     // Parse response
@@ -235,20 +235,28 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
     JsonValue Root;
     if (!Reader.parse(response, Root)) {
         HostPrintUTF8("{$CP0=Failed to parse API response.$}\n");
-        return "";
+        return "翻译失败"; // 返回明确的错误提示
     }
 
     JsonValue choices = Root["choices"];
     if (choices.isArray() && choices[0]["message"]["content"].isString()) {
         string translatedText = choices[0]["message"]["content"].asString();
 
-        // Handle RTL (Right-to-Left) languages.
+        // 处理多行翻译结果：只取最后一行
+        translatedText = translatedText.Trim(); // 去除多余的空格
+        if (translatedText.find("\n") != -1) {
+            array<string> lines = translatedText.split("\n");
+            translatedText = lines[lines.length() - 1].Trim(); // 取最后一行
+        }
+
+        // 处理 RTL 语言
         if (DstLang == "fa" || DstLang == "ar" || DstLang == "he") {
             translatedText = UNICODE_RLE + translatedText;
         }
+
         SrcLang = "UTF8";
         DstLang = "UTF8";
-        return translatedText.Trim(); // Trim to remove any extra whitespace
+        return translatedText;
     }
 
     // Handle API errors
@@ -259,7 +267,7 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
         HostPrintUTF8("{$CP0=Translation failed. Please check input parameters or API Key configuration.$}\n");
     }
 
-    return "";
+    return "翻译失败"; // 返回明确的错误提示
 }
 
 // Plugin Initialization
