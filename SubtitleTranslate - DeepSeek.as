@@ -28,7 +28,7 @@ string GetPasswordText() {
 }
 
 // Global Variables
-string api_key = "";
+string api_key = ""; // 全局变量，用于存储 API Key
 string selected_model = "deepseek-chat"; // Default model
 string apiUrl = "https://api.deepseek.com/v1/chat/completions"; // DeepSeek API URL
 string UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)";
@@ -114,9 +114,7 @@ int GetModelMaxTokens(const string &in modelName) {
 
 // Translation Function with Retry Mechanism
 string Translate(string Text, string &in SrcLang, string &in DstLang) {
-    // Load API key from temporary storage
-    api_key = HostLoadString("api_key", "");
-
+    // 检查 API Key 是否已配置
     if (api_key.empty()) {
         HostPrintUTF8("{$CP0=API Key not configured. Please enter it in the settings menu.$}\n");
         return "Translation failed: API Key not configured";
@@ -241,10 +239,14 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
 // Plugin Initialization
 void OnInitialize() {
     HostPrintUTF8("{$CP0=DeepSeek translation plugin loaded.$}\n");
-    // Load API Key from temporary storage (if saved)
+
+    // 从持久化存储中加载 API Key
     api_key = HostLoadString("api_key", "");
+
     if (!api_key.empty()) {
         HostPrintUTF8("{$CP0=Saved API Key loaded.$}\n");
+    } else {
+        HostPrintUTF8("{$CP0=No saved API Key found. Please configure it in the settings menu.$}\n");
     }
 }
 
