@@ -20,7 +20,7 @@ string GetLoginTitle() {
 }
 
 string GetLoginDesc() {
-    return "{$CP0=Please enter your API Key.$}";
+    return "{$CP936=仅输入API的值即可，账户名称留空。$}";
 }
 
 string GetPasswordText() {
@@ -155,11 +155,11 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
     }
 
     // Construct the prompt
-    string prompt = "You are a professional translator. Please translate the following subtitle, output only translated results. If content that violates the Terms of Service appears, just output the translation result that complies with safety standards.";
+    string prompt = "You are a professional translator. Please translate the following subtitle, output only the translated result for the current sentence. Do not include any additional explanations, context translations, or notes. If content that violates the Terms of Service appears, just output the translation result that complies with safety standards.";
     if (!SrcLang.empty()) {
-        prompt += " from " + SrcLang;
+        prompt += " Translate from " + SrcLang;
     }
-    prompt += " to " + DstLang + ". Use the context provided to maintain coherence.\n";
+    prompt += " to " + DstLang + ". Use the provided context only to maintain coherence, but do not include the context in the output.\n";
     if (!context.empty()) {
         prompt += "Context:\n" + context + "\n";
     }
@@ -233,7 +233,7 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
 
     // If all retries fail, return an error message
     HostPrintUTF8("{$CP0=Translation failed after maximum retries.$}\n");
-    return "Translation failed: Maximum retries reached";
+    return "Translation failed: Maximum retries reached. ";
 }
 
 // Plugin Initialization
