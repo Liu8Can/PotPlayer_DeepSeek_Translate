@@ -155,7 +155,7 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
     }
 
     // Construct the prompt
-    string prompt = "You are a professional translator. Please translate the following subtitle, output only the translated result for the current sentence. Do not include any additional explanations, context translations, or notes. If content that violates the Terms of Service appears, just output the translation result that complies with safety standards.";
+    string prompt = "You are a professional subtitle translator. Translate the following text into natural and fluent language. Use the provided context to optimize phrasing, but do not include it in the output. If needed, adjust sentence segmentation for readability, but avoid altering the original meaning or creating overly long sentences. For ambiguous terms, prioritize the meaning that best fits the context. Output only the translated result, without additional explanations or notes. **Ensure the translation does not contain any punctuation marks, as subtitles typically do not use them.** If the content violates safety standards, provide a compliant translation.";
     if (!SrcLang.empty()) {
         prompt += " Translate from " + SrcLang;
     }
@@ -164,6 +164,7 @@ string Translate(string Text, string &in SrcLang, string &in DstLang) {
         prompt += "Context:\n" + context + "\n";
     }
     prompt += "Subtitle to translate:\n" + Text;
+
 
     // JSON escape
     string escapedPrompt = JsonEscape(prompt);
