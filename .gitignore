@@ -1,0 +1,32 @@
+# 忽略虚拟环境
+.venv/
+
+# 忽略 PyInstaller 生成的文件
+build/
+dist/
+
+# 忽略 PyInstaller 的 .spec 文件
+*.spec
+
+# 忽略 Python 缓存文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 忽略 IDE 配置文件
+.vscode/
+.idea/
+
+# 忽略日志文件
+*.log
+
+# 忽略临时文件
+*.tmp
+*.temp
+
+# 忽略 macOS 系统文件
+.DS_Store
+
+# 忽略 Windows 系统文件
+Thumbs.db

@@ -26,21 +26,26 @@ This repository is a modified version of [Felix3322/PotPlayer_Chatgpt_Translate]
 ## 🛠️ 安装与使用 / Installation & Usage
 
 ### 1. **下载插件**
+
 - 从 [Releases](https://github.com/Liu8Can/PotPlayer_DeepSeek_Translate/releases) 下载最新版本的插件文件。
+- **不想折腾的的直接下载 `installer.exe` 即可一键安装**
 
 ### 2. **安装插件**
-- 解压后将`SubtitleTranslate - DeepSeek.as`和`SubtitleTranslate - DeepSeek.ico`两个文件复制到 PotPlayer 的翻译插件目录中，例如：
+
+- 解压后将 `SubtitleTranslate - DeepSeek.as`和 `SubtitleTranslate - DeepSeek.ico`两个文件复制到 PotPlayer 的翻译插件目录中，例如：
   ```
   D:\Program Files\DAUM\PotPlayer\Extension\Subtitle\Translate
   ```
 
 ### 3. **配置 API Key**
+
 1. 打开 PotPlayer，右键点击播放器界面，选择 **选项/偏好设置**。
 2. 在左侧菜单中找到 **字幕** -> **实时字幕翻译** -> **实时字幕翻译设置**。
 3. 在插件设置中，填入您的 **DeepSeek API Key**。一定要点击——账户设置——确定。测试——确定。以上两步操作，确保新的参数被注入。刚开始几段话会显示乱码，不要担心，因为网络请求刚开始并没有返回参数。可以尝试快进下。同时在请求中，有概率返回很多字幕的内容，已经尽可能减少了，但还没法完全避免。
 4. 保存设置并重启 PotPlayer。
 
 ### 4. **开始使用**
+
 - 播放视频时，插件会自动翻译字幕并显示在屏幕上。
 
 ---
