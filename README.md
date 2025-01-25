@@ -25,6 +25,9 @@ This repository is a modified version of [Felix3322/PotPlayer_Chatgpt_Translate]
 
 ## 🛠️ 安装与使用 / Installation & Usage
 
+- 视频教程：https://www.bilibili.com/video/BV1VLrmYYEt3/
+
+
 ### 1. **下载插件**
 
 - 从 [Releases](https://github.com/Liu8Can/PotPlayer_DeepSeek_Translate/releases) 下载最新版本的插件文件。
